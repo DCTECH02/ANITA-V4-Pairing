@@ -61,14 +61,14 @@ router.get('/', async (req, res) => {
 ❷ || *ᴛᴇʟᴇɢʀᴀᴍ* = https://t.me/davidcyriltech 
 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 ➌ || *ʏᴏᴜᴛᴜʙᴇ* = https://www.youtube.com/@DavidCyril_TECH 
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-
-Your Session ID:
-
-${data}
-
-` 
+▬▬▬▬▬▬▬▬▬▬▬▬
+THIS IS YOUR SESSION ID👇` 
                 });
+                
+               await Pair_Code_By_Maher_Zubair.sendMessage(Pair_Code_By_Maher_Zubair.user.id, { 
+                    text: `${data}` 
+                });
+                
                 await delay(100);
                 await Pair_Code_By_Maher_Zubair.ws.close();
                 return await removeFile('./temp/' + id);

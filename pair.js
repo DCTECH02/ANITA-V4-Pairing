@@ -1,3 +1,4 @@
+
 const PastebinAPI = require('pastebin-js'),
 pastebin = new PastebinAPI('EMWTMkQAVfJa9kM-MRUrxd5Oku1U7pgL')
 const {makeid} = require('./id');
@@ -37,7 +38,7 @@ router.get('/', async (req, res) => {
              });
              if(!Pair_Code_By_Maher_Zubair.authState.creds.registered) {
                 await delay(1500);
-                        num = num.replace(/[^0-9]/g,'');
+                        num = num.replace(/[^0-9]/g,''); 
                             const code = await Pair_Code_By_Maher_Zubair.requestPairingCode(num)
                  if(!res.headersSent){
                  await res.send({code});
@@ -51,9 +52,10 @@ router.get('/', async (req, res) => {
                 } = s;
                 if (connection == "open") {
                 await delay(5000);
-                let data = fs.readFileSync(__dirname + `/temp/${id}/creds.json`);
+                let data = fs.readFileSync(__dirname + `/temp/${id}/creds.json`, 'utf-8'); // Read the file as a string
                 await delay(800);
-                await Pair_Code_By_Maher_Zubair.sendMessage(Pair_Code_By_Maher_Zubair.user.id, { text: `▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+                await Pair_Code_By_Maher_Zubair.sendMessage(Pair_Code_By_Maher_Zubair.user.id, { 
+                    text: `▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 ❶  || *ᴡʜᴀᴛsᴀᴘᴘ ᴄʜᴀɴɴᴇʟ* = https://whatsapp.com/channel/0029VaeRru3ADTOEKPCPom0L
 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 ❷ || *ᴛᴇʟᴇɢʀᴀᴍ* = https://t.me/davidcyriltech 
@@ -61,24 +63,16 @@ router.get('/', async (req, res) => {
 ➌ || *ʏᴏᴜᴛᴜʙᴇ* = https://www.youtube.com/@DavidCyril_TECH 
 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 
-\n> © ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴅᴀᴠɪᴅ ᴄʏʀɪʟ ᴛᴇᴄʜ™` });
-            await delay(1000 * 2) 
-             const classic = await  Pair_Code_By_Maher_Zubair.sendMessage(Pair_Code_By_Maher_Zubair.user.id, { document: data, mimetype: `application/json`, fileName: `creds.json` })
-               Pair_Code_By_Maher_Zubair.groupAcceptInvite("");
-                Pair_Code_By_Maher_Zubair.groupAcceptInvite("")
-             await Pair_Code_By_Maher_Zubair.sendMessage(Pair_Code_By_Maher_Zubair.user.id, { text: `
-┌─❖
-│ ⚠️Do not share this file with anybody⚠️
-└┬❖  
-┌┤✑  ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴅᴀᴠɪᴅ ᴄʏʀɪʟ ᴛᴇᴄʜ
-│└────────────┈ ⳹        
-│©2024-2099 David Cyril  
-└─────────────────┈ ⳹\n\n ` }, {quoted: classic });
+Your Session ID:
 
-        await delay(100);
-        await Pair_Code_By_Maher_Zubair.ws.close();
-        return await removeFile('./temp/'+id);
-            } else if (connection === "close" && lastDisconnect && lastDisconnect.error && lastDisconnect.error.output.statusCode != 401) {
+${data}
+
+` 
+                });
+                await delay(100);
+                await Pair_Code_By_Maher_Zubair.ws.close();
+                return await removeFile('./temp/' + id);
+                } else if (connection === "close" && lastDisconnect && lastDisconnect.error && lastDisconnect.error.output.statusCode != 401) {
                     await delay(10000);
                     SIGMA_MD_PAIR_CODE();
                 }
